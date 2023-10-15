@@ -60,15 +60,27 @@
                 </thead>
 
                 <tbody>
-                   
+                    @foreach ($detail_product as $product)
+                        <tr>
+                            <td class="bs-center">{{ $loop->iteration }}</td>
+                            <td>{{ $product['name'] }}</td>
+                            <td>{{ number_format($product['price'], 0) }}</td>
+                            <td class="bs-center">{{ $product['qty'] }}</td>
+                            <td>{{ number_format($product['price'] * $product['qty'], 0) }}</td>
+                        </tr>
+                    @endforeach
 
-                 
+                    <?php $sum_price1 = 0; ?>
+                    @foreach ($detail_product as $product)
+                        <?php $sum_price1 += $product['price'] * $product['qty']; ?>
+                    @endforeach
 
 
                 </tbody>
                 <tfoot>
                     <tr>
                         <th colspan="4">รวม</th>
+                        <th>{{ number_format($sum_price1, 0) }}</th>
                     </tr>
                 </tfoot>
 

@@ -32,7 +32,7 @@
                     @foreach ($orders as $o)
                         <tr>
                             <td> {{ $o->id }} </td>
-                            <td> {{ $o->ref_id }} </td>
+                            <td> <a href="{{ url('/order/report/'. $o->ref_id) }}"> {{ $o->ref_id }} </a> </td>                           
                             <td> {{ $o->user->name }} </td>
                             <td> {{ $o->created_at->format('Y/m/d') }} </td>
                             <td class="bs-center"> <a href="{{ url('/order/detail/' . $o->id) }}"
@@ -52,5 +52,5 @@
             </table>
         </div>
     </div>
-    
+
 @endsection
