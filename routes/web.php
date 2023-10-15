@@ -38,17 +38,22 @@ Route::get('/test', function () {
     // );
 
 
-    $detail = Order_detail::where('order_id', 'like', '%' . $order->id . '%')->get();
-    $product_detail = $detail[0]->product;
+    // $detail = Order_detail::where('order_id', 'like', '%' . $order->id . '%')->get();
+    // $product_detail = $detail[0]->product;
     // $detail = Order_detail::where('order_id', 'like' , '%'.$order->id.'%')->get();
     // $product_detail = $detail[0]->product;
     // $username = $order->user->name;
     // $order = Auth::user()->id;
 
-    $order = Order::where('ref_id', 'like' ,'PO202310141')->get();
-    $order_id = $order[0]->id;
+    // $order = Order::where('ref_id', 'like' ,'PO202310141')->get();
+    // $order_id = $order[0]->id;
 
-    return compact('order_id');
+    $po_no = 'PO'.date("Ymd");
+    $order = Order::where('ref_id', 'like' , '%'.$po_no.'%')->get();
+    $order_count = $order->count();
+    $new_ref_id = $po_no.($order_count+1);
+
+    return compact('new_ref_id');
 
     // return Order_detail::find(1)->order->status;
     // return User::find(1)->name;
@@ -82,7 +87,7 @@ Route::get('/cart/finish', [App\Http\Controllers\CartController::class, 'finish_
 Route::get('/order', [App\Http\Controllers\OrderController::class, 'index']);
 Route::get('/order/insertOrder', [App\Http\Controllers\OrderController::class, 'insertOrder']);
 Route::get('/order/insertDetail', [App\Http\Controllers\OrderController::class, 'insertDetail']);
-
+Route::get('/order/report/{ref_id}', [App\Http\Controllers\OrderController::class, 'reportOrder']);
 
 Route::get('/order/detail/{id?}', [App\Http\Controllers\OrderdetailController::class, 'viewDetail']);
 Route::get('/order/detail/update/{id?}/{status?}', [App\Http\Controllers\OrderdetailController::class, 'update']);
