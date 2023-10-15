@@ -38,21 +38,12 @@
                             <td class="bs-center"> <a href="{{ url('/order/detail/' . $o->id) }}"
                                     class="btn btn-info">รายละเอียด</a> </td>
                             <td class="bs-center">
-                                @if ($o->payment_status == 0)
+                                @if ($o->status == 1)
                                     <span class="label label-danger">ยังไม่ชำระเงิน</span>
                                 @else
                                     <span class="label label-success">ชำระเงินแล้ว</span>
                                 @endif
 
-                                <label class="switch">
-                                    @if ($o->payment_status == 0)
-                                        <input type="checkbox" id="toggleSwitch" checked>
-                                        <span class="slider" id="result"></span>
-                                    @else
-                                        <input type="checkbox" id="toggleSwitch">
-                                        <span class="slider" id="result"></span>
-                                    @endif
-                                </label>
                             </td>
                         </tr>
                     @endforeach
@@ -61,14 +52,5 @@
             </table>
         </div>
     </div>
-    <script>
-        const toggleSwitch = document.getElementById('toggleSwitch');
-        toggleSwitch.addEventListener('click', () => {
-            if (toggleSwitch.checked) {
-                console.log('Toggle ' + toggleSwitch.checked);
-            } else {
-                console.log('Toggle ' + toggleSwitch.checked);
-            }
-        });
-    </script>
+    
 @endsection

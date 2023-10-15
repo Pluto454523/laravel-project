@@ -36,6 +36,16 @@ class OrderdetailController extends Controller
         
     }
 
+    function update($id , $status){
+        $order = Order::find($id);
+        $order->status = $status;
+        $order->save();
+
+        // return compact('order');
+        return redirect('/order');
+    }
+
+
    
 
 

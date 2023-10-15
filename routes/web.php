@@ -85,3 +85,4 @@ Route::get('/order/insertDetail', [App\Http\Controllers\OrderController::class, 
 
 
 Route::get('/order/detail/{id?}', [App\Http\Controllers\OrderdetailController::class, 'viewDetail']);
+Route::get('/order/detail/update/{id?}/{status?}', [App\Http\Controllers\OrderdetailController::class, 'update']);
