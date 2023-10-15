@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session; //ต้องมี
 use App\Models\Product;
+use App\Models\Order;
 
 class CartController extends Controller
 {
@@ -79,15 +80,20 @@ class CartController extends Controller
         }
         $cust_name = $request->cust_name;
         $cust_email = $request->cust_email;
-        // $po_no = 'PO' . date("Ymd");
         $po_date = date("Y-m-d H:i:s");
 
         
         // สุ่มค่า PO
-        $randNum = str_pad(rand(0, 99), 2, '0', STR_PAD_LEFT);
-        $po_no = 'PO'.date("Ymd").$randNum;
-        Session::put('po_no', $po_no);
+        // $randNum = str_pad(rand(0, 99), 2, '0', STR_PAD_LEFT);
+        // $po_no = 'PO'.date("Ymd").$randNum;
+        // Session::put('po_no', $po_no);
 
+        // ค่า PO แบบบวกเพิ่ม รีเซ็ตตามวัน
+        $po_no = 'PO'.date("Ymd");
+        $order = Order::where('ref_id', 'like' , '%'.$po_no.'%')->get();
+        $order_count = $order->count();
+        $po_no = $po_no.($order_count+1);
+        Session::put('po_no', $po_no);
         
         $total_amount = 0;
         foreach ($cart_items as $c) {
