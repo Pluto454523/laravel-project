@@ -8,7 +8,7 @@ use Config, Validator;
 
 class CategoryController extends Controller
 {
-    var $rp = 2;
+    var $rp = 10;
     public function index()
     {
         $categories = Category::paginate($this->rp);
