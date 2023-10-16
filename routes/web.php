@@ -91,3 +91,10 @@ Route::get('/order/report/{ref_id}', [App\Http\Controllers\OrderController::clas
 
 Route::get('/order/detail/{id?}', [App\Http\Controllers\OrderdetailController::class, 'viewDetail']);
 Route::get('/order/detail/update/{id?}/{status?}', [App\Http\Controllers\OrderdetailController::class, 'update']);
+
+Route::get('/user', [App\Http\Controllers\UserController::class, 'index']);
+Route::get('/user/edit/{id?}', [App\Http\Controllers\UserController::class, 'edit']);
+Route::get('/user/remove/{id?}', [App\Http\Controllers\UserController::class, 'remove']);
+Route::post('/user/update', [App\Http\Controllers\UserController::class, 'update']);
+Route::post('/user/insert', [App\Http\Controllers\UserController::class, 'insert']);
+

@@ -34,6 +34,7 @@
                     <li><a href="{{ URL::to('product') }}">จัดการข้อมูลสินค้า </a></li>
                     <li><a href="{{ URL::to('category') }}">จัดการประเภทสินค้า </a></li>
                     <li><a href="{{URL::to('order')}}">รายการสั่งซื้อ</a></li> 
+                    <li><a href="{{URL::to('user')}}">จัดการผู้ใช้</a></li>
                 @endguest
                 </ul>
 
