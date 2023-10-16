@@ -4,23 +4,43 @@
 <head>
     <meta charset="utf-8">
     <style>
-        body {
+         body {
             font-family: "Garuda", sans-serif;
         }
 
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
         table tr th {
-            padding: 5px;
+            padding: 10px;
             background-color: #f7f7f7;
+            border: 1px solid #ccc;
+            text-align: left;
         }
 
         table tr td {
-            padding: 5px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .notes {
+            margin-top: 20px;
+        }
+
+        .total-amount {
+            text-align: right;
+            padding-right: 10px;
         }
     </style>
 </head>
 
 <body>
     <table border="0" width="100%">
+        
+       
+
         <tr>
             <td colspan="2" align="center">
                 <h1>ใบสั่งซื้อ</h1>
@@ -87,10 +107,11 @@
                 </ul>
             </td>
             <td align="right"><strong>จํานวนเงินรวมทั้งสิ้น</strong>
-                <h1>{{ $total_amount }} บาท
+                <h1> {{number_format($total_amount)}} บาท
                 </h1>
             </td>
 
+            
         </tr>
     </table>
 </body>

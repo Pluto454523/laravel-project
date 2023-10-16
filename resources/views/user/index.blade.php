@@ -34,10 +34,12 @@
                             <td> {{ $o->name }} </td>
                             <td> {{ $o->email }} </td>
                             <td> {{ $o->created_at }} </td>
-                            <td><a href="{{ URL::to('user/edit/' . $o->id) }}" class="btn btn-info"> <i class="fa fa-edit"></i>
+                            <td class="bs-center">
+                            <a href="{{ URL::to('user/edit/' . $o->id) }}" class="btn btn-info"> <i class="fa fa-edit"></i>
                                     แก้ไข</a>
                                 <a href="#" class="btn btn-danger btn-delete" id-delete="{{ $o->id }}">
                                     <i class="fa fa-trash"></i> ลบ</a>
+                            </td>
                         </tr>
                     @endforeach
 
